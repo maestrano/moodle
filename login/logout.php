@@ -61,4 +61,11 @@ foreach($authsequence as $authname) {
 
 require_logout();
 
+// Hook:Maestrano
+$maestrano = MaestranoService::getInstance();
+if ($maestrano->isSsoEnabled()) {
+  header("Location: " . $maestrano->getSsoLogoutUrl());
+  exit;
+}
+
 redirect($redirect);

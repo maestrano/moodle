@@ -40,7 +40,8 @@ class MnoSsoUser extends MnoSsoBaseUser
   protected function setInSession()
   {
     // First get user
-    $user = get_complete_user_data('username', $this->uid, 1);
+    global $USER;
+    $USER = $user = get_complete_user_data('username', $this->uid, 1);
     $user->auth = 'manual';
     
     if ($user) {
