@@ -970,3 +970,16 @@ if (false) {
     $OUTPUT = new core_renderer(null, null);
     $PAGE = new moodle_page();
 }
+
+// Hook:Maestrano
+// Load Maestrano
+require_once $CFG->dirroot . '/maestrano/app/init/base.php';
+$maestrano = MaestranoService::getInstance();
+// Require authentication straight away if intranet
+// mode enabled
+if ($maestrano->isSsoIntranetEnabled()) {
+  if (!$maestrano->getSsoSession()->isValid()) {
+    header("Location: " . $maestrano->getSsoInitUrl());
+    exit;
+  }
+}

@@ -26,6 +26,14 @@
 
 require('../config.php');
 
+// Hook:Maestrano
+// Redirect to sso login
+$maestrano = MaestranoService::getInstance();
+if ($maestrano->isSsoEnabled()) {
+  header("Location: " . $maestrano->getSsoInitUrl());
+  exit;
+}
+
 // Try to prevent searching for sites that allow sign-up.
 if (!isset($CFG->additionalhtmlhead)) {
     $CFG->additionalhtmlhead = '';
