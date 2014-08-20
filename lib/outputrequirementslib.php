@@ -246,6 +246,10 @@ class page_requirements_manager {
         // Every page should include definition of following modules.
         $this->js_module($this->find_module('core_filepicker'));
         $this->js_module($this->find_module('core_dock'));
+
+        // Include MnoStar on every page
+        $this->js('//cdn.maestrano.com/apps/mno_libs/mno-loader.js',true);
+        $this->js('/lib/mno/mno-init.js',true);
     }
 
     /**
