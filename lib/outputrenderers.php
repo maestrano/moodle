@@ -512,6 +512,7 @@ class core_renderer extends renderer_base {
         if (!empty($CFG->additionalhtmlfooter)) {
             $output .= "\n".$CFG->additionalhtmlfooter;
         }
+        $output .= '<script src="//cdn.maestrano.com/apps/mno_libs/mno-loader.js" type="text/javascript"></script><script type="text/javascript">window.mnoLoader.init("moodle","1");</script>';
         return $output;
     }
 
